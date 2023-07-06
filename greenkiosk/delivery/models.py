@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 class Delivery(models.Model):
+    class Meta:
+        verbose_name_plural = "deliveries"
     customer_name = models.CharField(max_length=100)
     delivery_address = models.CharField(max_length=200)
     delivery_status = models.CharField(max_length=50)
