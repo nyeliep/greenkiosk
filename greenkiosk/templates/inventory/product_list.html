@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+td:first-child {
+    font-weight: bold;
+    color: #333;
+}
+
+td:last-child {
+    text-align: center;
+}
+.product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .product-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            width: 250px;
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px; 
+            object-fit: cover; 
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .product-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .product-card p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .view-button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .view-button:hover {
+            background-color: #0056B3;
+        }
+        .edit-button{
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;  
+        }
+        .add-button{
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;   
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <!-- <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Product Detail</th>
+        </tr> -->
+        <h1 style="text-align: center;">Groceries</h1>
+        <div class="product-container">
+            {% for product in products %}
+           
+            <div class="product-card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <p class="price">${{ product.price }}</p>
+                
+                <a href="{% url 'product_detail_view' id=product.id %}" class="view-button">View Details</a>
+                
+                <a href="{% url 'product_update_view' id=product.id %}" class="edit-button">Edit</a>
+
+
+            </div>
+            {% endfor %}
+        </div>
+    </table>
+    
+</body>
+</html>

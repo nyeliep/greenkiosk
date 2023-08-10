@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px;
+        }
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin: 0;
+        }
+        p {
+            color: #666;
+        }
+        span {
+            color: #f00;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <img src="{{product.image.url}}"/>
+    <h2>{{product.title}}</h2>
+    <p>{{product.description}}</p>
+    <span>{{product.price}}</span>
+
+    <button>Add to cart</button>
+</body>
+</html>
