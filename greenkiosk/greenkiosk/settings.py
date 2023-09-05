@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'delivery',
     'feedback',
     'refund',
+    'rest_framework'
     
 ]
 

@@ -32,6 +32,7 @@ urlpatterns = [
     path("payment/", include("payment.urls")),
     path("refund/", include("refund.urls")),
     path("vendor/", include("vendor.urls")),
+    path("api/", include("api.urls")),
     
 ]
 if settings.DEBUG:

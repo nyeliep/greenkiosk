@@ -43,11 +43,17 @@
     </style>
 </head>
 <body>
+
     <img src="{{product.image.url}}"/>
     <h2>{{product.title}}</h2>
     <p>{{product.description}}</p>
     <span>{{product.price}}</span>
 
-    <button>Add to cart</button>
+
+    <a href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
+
+
+
+    
 </body>
 </html>

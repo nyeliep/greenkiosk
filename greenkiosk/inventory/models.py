@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from vendor.models import Vendor
 
 # Create your models here.
@@ -14,3 +15,6 @@ class Product(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     stock = models.PositiveIntegerField()
+
+
+  
