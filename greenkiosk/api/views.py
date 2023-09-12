@@ -2,8 +2,11 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Customer, Product, Cart, Order
-from .serializer import CustomerSerializer, CartSerializer,ProductSerializer,OrderSerializer
+from customer.models import Customer
+from product.models import Product
+from cart.models import Cart
+from order.models import Order
+from api.serializer import CustomerSerializer, CartSerializer,ProductSerializer,OrderSerializer
 
 
 
@@ -80,6 +83,15 @@ class ProductDetailView(APIView):
 
 # Cart views
 class CartListView(APIView):
+    def post(self, request, format = None):
+         cart_id = request.data["cart_id"]
+         product_id =request.data["product_id"]
+         cart = Cart.objects.get(id=cart_id)
+         product = Product.objects.get(id=product_id)
+         updated_cart = Cart.add_product(product)
+         serializer =CartSerializer(updated_cart)
+         return Response(serializer.data)
+    
     def get(self, request):
         carts = Cart.objects.all()
         serializer = CartSerializer(carts, many=True)
@@ -111,7 +123,7 @@ class CartDetailView(APIView):
         cart.delete()
         return Response("Cart deleted", status=status.HTTP_204_NO_CONTENT)
 
-    
+
 
 # Order views
 class OrderListView(APIView):
